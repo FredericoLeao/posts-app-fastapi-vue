@@ -1,0 +1,5 @@
+FROM postgres:17
+
+ENV POSTGRES_USER=pguser
+ENV POSTGRES_PASSWORD=pgpass
+ENV POSTGRES_DB=postsapp
