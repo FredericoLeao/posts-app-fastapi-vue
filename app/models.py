@@ -25,3 +25,8 @@ class Post(TimestampedModel, table=True):
     user_id: int = Field()
     title: str = Field()
     content: str = Field()
+
+class PostRevision(TimestampedModel, table=True):
+    id: int | None = Field(primary_key=True)
+    post_id: int = Field()
+    content: str = Field()
