@@ -6,3 +6,5 @@ psycopg2-binary
 asyncpg
 alembic
 
+pytest
+httpx

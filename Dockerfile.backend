@@ -2,8 +2,6 @@ FROM python:3.12
 
 WORKDIR /app
 
-ENV DATABASE_URL=postgresql://pguser:pgpass@postsapp-db:5432/postsapp
-
 COPY app/requirements.txt .
 
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
