@@ -6,6 +6,11 @@ class PostInput(BaseModel):
     title: str
     content: str
 
+class PostInputUpdate(BaseModel):
+    id: int | None = None
+    title: str | None = None
+    content: str | None = None
+
 class PostOutput(BaseModel):
     id: int | None
     title: str
