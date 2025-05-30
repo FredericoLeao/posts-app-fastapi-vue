@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Para e remove containers e imagens, caso existam/estejam executando
+docker stop postsapp-db-testing
+docker rm postsapp-db-testing
+docker rmi postsapp-db-testing
+docker stop postsapp-be-testing
+docker rm postsapp-be-testing
+docker rmi postsapp-be-testing
+docker network rm postsapp-network-testing
+
 # Cria network para os containers
 docker network create postsapp-network-testing
 
@@ -29,9 +38,11 @@ echo "Aguardando inicialização dos serviços"
 sleep 4;
 
 # Inicializa base de dados e executa os testes
-docker exec -it postsapp-db-testing createdb postsapp-testing -U pguser
-docker exec -it postsapp-be-testing alembic upgrade head
-docker exec -it postsapp-be-testing pytest -vvv
+docker exec -it postsapp-db-testing dropdb postsapp-testing -U pguser;
+docker exec -it postsapp-db-testing createdb postsapp-testing -U pguser;
+docker exec -it postsapp-be-testing alembic upgrade head;
+docker exec -it postsapp-be-testing pytest -vvv;
+
 
 # Para e remove containers e imagens
 docker stop postsapp-db-testing
